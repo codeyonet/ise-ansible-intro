@@ -1,0 +1,6 @@
+ansible             # Ansible package
+bcrypt              # required for sshkey & VSFTDd user creation
+passlib             # required for VSFTDd user creation
+ciscoisesdk         # ISE Python SDK for Ansible modules
+jmespath            # JSON queries
+paramiko            # Ansible SSH
