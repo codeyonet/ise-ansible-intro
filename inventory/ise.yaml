@@ -1,0 +1,56 @@
+---
+#------------------------------------------------------------------------------
+# Verify your Anible inventory with
+#   ansible-inventory --graph [ -i inventory/ise.yaml ]
+#   ansible-inventory --list  [ -i inventory/ise.yaml ]
+#   ansible-inventory --host {hostname}
+#
+# There are two default groups:
+#   - all : contains every host
+#   - ungrouped : contains all hosts not belonging to another group
+#
+# Variable precedence: all < parent group < child group < host
+#
+# For details on creating Ansible inventory files, see
+# https://docs.ansible.com/ansible/latest/user_guide/intro_inventory.html
+# For common patterns for targeting inventory hosts and groups:
+# https://docs.ansible.com/ansible/latest/user_guide/intro_patterns.html
+#------------------------------------------------------------------------------
+
+all:
+  vars: # global vars
+    ansible_connection: ansible.netcommon.network_cli
+    ansible_network_os: cisco.ios.ios
+    # ansible_ssh_user: "{{ lookup('env','ISE_SSH_USERNAME') }}" # ISE 3.2+ cloud instances use `iseadmin`
+    # ansible_ssh_password: "{{ lookup('env','ISE_SSH_PASSWORD') }}" # appliances & VMs
+    # ansible_ssh_private_key_file: "{{ ssh_key_directory }}/{{ ssh_key_name }}" # cloud instances
+    # ise_patch_filename: ise-patchbundle-3.3.0.430-Patch1-23091201.SPA.x86_64.tar.gz
+
+  children: # define groups from the hosts above
+    ise: # all of the ISE nodes
+      hosts:
+        # ▼ Un/comment and edit to match ISE node's names and IP addresses! ▼
+        ise_nodes:
+          ansible_host: 10.207.195.71
+        # ise-ppan:
+        #   ansible_host: 10.1.100.21
+        # ise-span:
+        #   ansible_host: 10.1.100.22
+        # ise-psn1:
+        #   ansible_host: 10.1.100.23
+        # ise-psn2:
+        #   ansible_host: 10.1.100.24
+        # ise-aws:
+        #   ansible_host: 172.31.1.21
+        # ise-azure:
+        #   ansible_host: 172.31.1.21
+        # ise-hyperv:
+        #   ansible_host: 10.1.100.23
+        # ise-kvm:
+        #   ansible_host: 10.1.100.24
+        # ise-nutanix:
+        #   ansible_host: 10.1.100.25
+        # ise-oci:
+        #   ansible_host: 172.31.1.21
+
+      vars: # Define group vars here or in `inventory/group_vars/ise.yaml`

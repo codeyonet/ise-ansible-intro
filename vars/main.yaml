@@ -1,0 +1,57 @@
+---
+project_name: ISE_Ansible_Intro
+owner: andre
+ntp_server: time.nist.gov
+domain_name: xyz.net
+dns_server: 208.67.222.222 # Cisco Umbrella
+timezone: America/Los_angeles
+#
+#########################################################################################
+#
+# ISE
+# The `cisco.ise` Ansible collection can now use environment variables from version 2.5.8 and newer,
+# this section defines the environment variables for the playbooks.
+#
+# ise_init_password: "{{ lookup('env','ISE_INIT_PASSWORD') }}"
+ise_username: "{{ lookup('env','ISE_REST_USERNAME') }}"
+ise_password: "{{ lookup('env','ISE_REST_PASSWORD') }}"
+ise_verify: "{{ lookup('env','ISE_VERIFY') | default(False, true) }}"
+ise_debug: "{{ lookup('env','ISE_DEBUG')  | default(False, true) }}"
+radius_secret: "{{ lookup('env','ISE_REST_PASSWORD') }}"
+repo_user: iseftp
+repo_password: "{{ lookup('env','ISE_REST_PASSWORD') }}"
+# license_token: "{{ lookup('env','ISE_LIC_TOKEN') }}"
+#
+# Backup and Restore variables
+#
+# ise_repository_name: FTP
+# ise_backup_encryption_key: ISEisC00L
+# ise_backup_name_prefix: "codeyo" #  variable from date_time.yaml
+# ise_restore_adeos: false
+# urt_bundle_33: ise-urtbundle-3.3.0.430-1.0.0.SPA.x86_64.tar.gz
+# upgrade_bundle: ise-upgradebundle-3.0.x-3.2.x-to-3.3.0.430.SPA.x86_64.tar.gz
+# ise32p3: ise-patchbundle-3.2.0.542-Patch3-23071904.SPA.x86_64.tar.gz
+# ise32p4: ise-patchbundle-3.2.0.542-Patch4-23101514.SPA.x86_64.tar.gz
+# ise33p1:
+# #
+# ise_node_size: small
+# ise_version: ise33
+# ise_nodes:
+#   - name: "{{ project_name }}"
+#     ami: "{{ ise_image[provider][ise_version][region] }}"
+#     instance_type: "{{ ise_instances[provider][ise_node_size] }}"
+
+
+#########################################################################################
+#
+# SSH
+# The `ssh_key_local` role creates an SSH keypair using the
+# project name as the key name.  I'm using my existing keypair, to
+# use the generated key, uncomment the `ssh_key_private_file` below
+# comment out the one that is in use.
+#
+ssh_key_directory: ~/.ssh
+# ssh_key_name: "{{ project_name }}"
+# ssh_key_private_file: "{{ ssh_key_directory }}/{{ project_name }}"
+ssh_key_private_file: "{{ ssh_key_directory }}/id_rsa"
+ssh_key_public_file:  "{{ ssh_key_private_file }}.pub"

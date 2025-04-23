@@ -1,0 +1,25 @@
+---
+#------------------------------------------------------------------------------
+# Verify your Anible inventory with
+#   ansible-inventory --graph
+#   ansible-inventory --list
+#   ansible-inventory --host {hostname}
+#   ansible-inventory -i inventory --graph
+#
+# There are two default groups:
+#   - all : contains every host
+#   - ungrouped : contains all hosts not belonging to another group
+#
+# Variable precedence: all < parent group < child group < host
+#
+# For details on creating Ansible inventory files, see
+# https://docs.ansible.com/ansible/latest/user_guide/intro_inventory.html
+# For common patterns for targeting inventory hosts and groups:
+# https://docs.ansible.com/ansible/latest/user_guide/intro_patterns.html
+#------------------------------------------------------------------------------
+# 🛑 Inventory files are static - variables and filters are not evaluated!
+all:
+  hosts:
+    localhost:
+      ansible_connection: local # deploy playbook to control machine
+    # ansible_playbook_python: /Users/thomas/hack/Projects/ISE_Ansible_Sandbox/.venv/bin/python
