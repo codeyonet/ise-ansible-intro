@@ -31,7 +31,7 @@ all:
       hosts:
         # ▼ Un/comment and edit to match ISE node's names and IP addresses! ▼
         ise_nodes:
-          ansible_host: 10.207.195.71
+          ansible_host: 127.0.0.1
         # ise-ppan:
         #   ansible_host: 10.1.100.21
         # ise-span:
