@@ -11,7 +11,7 @@ I created this repository to help customers start using Ansible with ISE without
 - Uses the `cisco.ise` Ansible collection and `ciscoisesdk` Python SDK
 
 ## Prerequisites
-- Python 3.8+
+- Python 3.11+
 - [Ansible](https://docs.ansible.com/ansible/latest/installation_guide/intro_installation.html)
 - Cisco ISE instance (with API access enabled)
 
@@ -103,7 +103,7 @@ all:
     ise:
       hosts:
         ise_nodes:
-          ansible_host: 10.207.195.71
+          ansible_host: 1.2.3.4
 ```
 
 ## Example Variables (vars/main.yaml)
