@@ -113,8 +113,5 @@ ise_password: "{{ lookup('env','ISE_REST_PASSWORD') }}"
 ise_verify: "{{ lookup('env','ISE_VERIFY') | default(False, true) }}"
 ```
 
-## Contributing
-Pull requests and issues are welcome! Please open an issue to discuss your ideas or report bugs.
-
 ## License
-Specify your license here (e.g., MIT, Apache 2.0, etc.) 
+This project is licensed under the MIT License - see the LICENSE file for details.
